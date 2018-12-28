@@ -1,3 +1,6 @@
+#Author: henning.s.strandaa@gmail.com
+#Git: emasru
+
 import matplotlib.pyplot as plt
 
 
