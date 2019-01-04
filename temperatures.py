@@ -1,5 +1,5 @@
-#Author: henning.s.strandaa@gmail.com
-#Git: emasru
+# Author: henning.s.strandaa@gmail.com
+# Git: emasru
 
 import matplotlib.pyplot as plt
 
@@ -22,17 +22,20 @@ def read():
     return data  # Lukker fila, og lager en ny liste som inneholder alle de andre listene, og returnerer denne
 
 
-temperature = read()
+file_data = read()
 print("Dato     Gjennomsnittstemperatur     Normaltemperatur")
-for x in range(len(temperature[0])):
-    print(temperature[0][x], str(temperature[1][x]), str(temperature[2][x]))  # Printer ut hver data, rekke for rekke
+for x in range(len(file_data[0])):
+    print(file_data[0][x], str(file_data[1][x]), str(file_data[2][x]))  # Printer ut hver data, rekke for rekke
 
-temperature_len = []
-for x in range(len(temperature[0])):
-    temperature_len.append(x)
+file_data_len = []
+for x in range(len(file_data[0])):
+    file_data_len.append(x)  # Lager en liste med lengden til dataen, noe some trengs til plottingen
 
 # plt.bar(temperature_len, temperature[1], tick_label=temperature[0])
 ax = plt.subplot(111)
-ax.bar([x+0.8 for x in temperature_len], temperature[1], color="r", tick_label=temperature[0])
-ax.bar(temperature_len, temperature[2], color="g")
+ax.bar([x + 0.5 for x in file_data_len], file_data[1], color="r", tick_label=file_data[0], label="Gjennomsnittstemperatur")
+ax.bar(file_data_len, file_data[2], color="g", label="Normaltemperatur")
+ax.legend(loc='upper left')
 plt.show()
+
+
